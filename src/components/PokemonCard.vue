@@ -33,7 +33,7 @@ export default {
     aspect-ratio: 1/1;
 
     figure {
-        width: 80%;
+        width: 70%;
         margin: 0;
     }
 
