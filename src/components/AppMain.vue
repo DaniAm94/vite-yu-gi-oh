@@ -4,6 +4,9 @@ export default {
 }
 </script>
 
-<template></template>
+<template>
+    <main class="row">
+    </main>
+</template>
 
 <style></style>
