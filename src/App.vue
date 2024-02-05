@@ -14,18 +14,26 @@ export default {
   },
   methods: {
     fetchPokemons() {
-      axios.get(endpoint).then(res => {
-        store.pokemons = res.data.docs.map(pokemon => {
-          return {
-            id: pokemon._id,
-            name: pokemon.name,
-            number: pokemon.number,
-            type: pokemon.type1,
-            type2: pokemon.type2,
-            img: pokemon.imageUrl
-          }
+      store.isLoading = true;
+      setTimeout(() => {
+
+        axios.get(endpoint).then(res => {
+          store.pokemons = res.data.docs.map(pokemon => {
+            return {
+              id: pokemon._id,
+              name: pokemon.name,
+              number: pokemon.number,
+              type: pokemon.type1,
+              type2: pokemon.type2,
+              img: pokemon.imageUrl
+            }
+          })
+        }).catch(err => {
+          console.error(err)
+        }).then(() => {
+          store.isLoading = false;
         })
-      })
+      }, 2000)
     }
   },
   created() {
