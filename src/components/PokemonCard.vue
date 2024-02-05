@@ -1,0 +1,42 @@
+<script>
+export default {
+    name: 'Pomenon Card',
+    props: {
+        pokemon: Object
+    }
+}
+</script>
+
+<template>
+    <div class="pokemon-card shadow text-center rounded p-3">
+        <div class="thumb d-flex justify-content-center align-items-center rounded-circle mb-2">
+            <figure>
+
+                <img class="img-fluid" :src="pokemon.img" :alt="pokemon.name">
+            </figure>
+        </div>
+        <div>{{ pokemon.number }}</div>
+        <div><strong>{{ pokemon.name }}</strong></div>
+        <div>{{ pokemon.type }} <span v-if="pokemon.type2">- {{ pokemon.type2 }}</span></div>
+
+    </div>
+</template>
+
+<style scoped>
+.pokemon-card {
+    background-color: lightgray;
+}
+
+.thumb {
+    background-color: white;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+
+    figure {
+        width: 80%;
+        margin: 0;
+    }
+
+
+}
+</style>

@@ -1,19 +1,21 @@
 <script>
+
+
 const endpoint = 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons';
+import { store } from './data/store.js';
 import axios from 'axios';
 import AppMain from './components/AppMain.vue';
+
+
 export default {
   name: 'App Vue',
-  data: () => ({
-    pokemons: []
-  }),
   components: {
     AppMain
   },
   methods: {
     fetchPokemons() {
-      axios.get('https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons').then(res => {
-        this.pokemons = res.data.docs.map(pokemon => {
+      axios.get(endpoint).then(res => {
+        store.pokemons = res.data.docs.map(pokemon => {
           return {
             id: pokemon._id,
             name: pokemon.name,
@@ -33,17 +35,30 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <AppMain />
-    <!-- Main WIP -->
+  <div class="background">
+
+    <div class="container-sm py-3 ">
+      <AppMain />
+      <!-- Main WIP -->
+    </div>
   </div>
 </template>
 
 <style>
-.container {
-  max-width: 1080px;
+.background {
   height: 100vh;
-  background-image: url('./assets/img/pxfuel.jpg');
+  background-image: url('./assets/img/pokemon-pokedex-background.jpg');
   background-size: 100% 100%;
+  padding-top: 200px;
+}
+
+.container-sm {
+  background-color: #63666b;
+  border-top: 15px solid;
+  border-bottom: 15px solid;
+  border-right: 10px solid;
+  border-left: 10px solid;
+  border-color: #dedede;
+  border-radius: 10px;
 }
 </style>
