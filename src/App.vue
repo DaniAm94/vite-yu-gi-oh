@@ -1,11 +1,18 @@
 <script>
+import AppMain from './components/AppMain.vue';
 export default {
-  name: 'App Vue'
+  name: 'App Vue',
+  components: {
+    AppMain
+  }
 }
 </script>
 
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <AppMain />
+    <!-- Main WIP -->
+  </div>
 </template>
 
 <style>
