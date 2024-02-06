@@ -1,20 +1,22 @@
 <script>
 
 
-//const endpoint = 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons';
-import { endpoint, endpointType } from './data'
+import { endpoint, endpointType } from './data' //This path points to the index.js file
 import { store } from './data/store.js';
 import axios from 'axios';
 import AppMain from './components/AppMain.vue';
+import AppHeader from './components/AppHeader.vue';
+import { TrackOpTypes } from 'vue';
 
 
 export default {
   name: 'App Vue',
   data: () => ({
-    store
+    store,
   }),
   components: {
-    AppMain
+    AppMain,
+    AppHeader
   },
   methods: {
     fetchPokemons(endpoint) {
@@ -51,8 +53,16 @@ export default {
       })
     },
     goTo(page) {
-      const endpointPlusKey = endpoint + `?page=${page}`;
-      this.fetchPokemons(endpointPlusKey);
+      const endpointPlusPage = endpoint + `?page=${page}`
+      this.fetchPokemons(endpointPlusPage);
+    },
+    filterPokemonsPerType(type) {
+      if (type) {
+        this.fetchPokemons(endpoint + `?eq[type1]=${type}`)
+      } else {
+        // Se type è vuoto (quindi il select è su all)
+        this.fetchPokemons(endpoint)
+      }
     }
   },
   created() {
@@ -65,6 +75,7 @@ export default {
 <template>
   <div class="background">
 
+    <AppHeader @change-type="filterPokemonsPerType" :types="store.types" />
     <div class="container-sm py-3 ">
       <AppMain />
 
