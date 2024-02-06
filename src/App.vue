@@ -45,7 +45,7 @@ export default {
       }, 2000)
     },
     goTo(page) {
-      const endpointPlusKey = endpoint + `?page=${page}`
+      const endpointPlusKey = endpoint + `?page=${page}`;
       this.fetchPokemons(endpointPlusKey);
     }
   },
