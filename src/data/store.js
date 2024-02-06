@@ -8,5 +8,6 @@ export const store = reactive({
     hasNextPage: false,
     prevPage: null,
     nextPage: null,
-    totalPages: null
+    totalPages: null,
+    types: []
 })

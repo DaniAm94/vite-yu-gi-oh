@@ -1,7 +1,8 @@
 <script>
 
 
-const endpoint = 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons';
+//const endpoint = 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons';
+import { endpoint, endpointType } from './data'
 import { store } from './data/store.js';
 import axios from 'axios';
 import AppMain from './components/AppMain.vue';
@@ -44,6 +45,11 @@ export default {
         })
       }, 2000)
     },
+    fetchPokemonTypes() {
+      axios.get(endpointType).then(res => {
+        store.types = res.data;
+      })
+    },
     goTo(page) {
       const endpointPlusKey = endpoint + `?page=${page}`;
       this.fetchPokemons(endpointPlusKey);
@@ -51,6 +57,7 @@ export default {
   },
   created() {
     this.fetchPokemons(endpoint);
+    this.fetchPokemonTypes();
   }
 }
 </script>
