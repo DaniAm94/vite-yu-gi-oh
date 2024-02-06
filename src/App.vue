@@ -76,7 +76,7 @@ export default {
   <div class="background">
 
     <AppHeader @change-type="filterPokemonsPerType" :types="store.types" />
-    <div class="container-sm py-3 ">
+    <div class="container-sm py-3 main">
       <AppMain />
 
 
@@ -108,7 +108,7 @@ export default {
   padding-top: 150px;
 }
 
-.container-sm {
+.container-sm.main {
   background-color: #63666b;
   border-top: 15px solid;
   border-bottom: 15px solid;
