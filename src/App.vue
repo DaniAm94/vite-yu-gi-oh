@@ -6,17 +6,16 @@ import { store } from './data/store.js';
 import axios from 'axios';
 import AppMain from './components/AppMain.vue';
 import AppHeader from './components/AppHeader.vue';
-import { TrackOpTypes } from 'vue';
+import AppPagination from './components/AppPagination.vue';
 
 
 export default {
   name: 'App Vue',
-  data: () => ({
-    store,
-  }),
+  data: () => ({ store }),
   components: {
     AppMain,
-    AppHeader
+    AppHeader,
+    AppPagination
   },
   methods: {
     fetchPokemons(endpoint) {
@@ -82,27 +81,15 @@ export default {
 
     </div>
     <!-- Pagination -->
-    <nav v-if="!store.isLoading" class="d-flex justify-content-center mt-4">
-      <ul class="pagination">
-        <li v-if="store.hasPrevPage" class="page-item" @click="goTo(store.prevPage)" role="button">
-          <span class="page-link">
-            <span>&laquo;</span>
-          </span>
-        </li>
-        <li class="page-item"><span class="page-link">{{ store.page }} - {{ store.totalPages }}</span></li>
-        <li v-if="store.hasNextPage" class="page-item" @click="goTo(store.nextPage)" role="button">
-          <span class="page-link">
-            <span>&raquo;</span>
-          </span>
-        </li>
-      </ul>
-    </nav>
+    <AppPagination @change-page="goTo" v-if="!store.isLoading" :has-next-page="store.hasNextPage"
+      :has-prev-page="store.hasPrevPage" :current-page="store.page" :total-pages="store.totalPages" />
+
   </div>
 </template>
 
 <style>
 .background {
-  height: 100vh;
+  min-height: 100vh;
   background-image: linear-gradient(45deg, white 500px, black 500px 600px, red 600px);
   padding-top: 25px;
 }
@@ -114,8 +101,8 @@ export default {
   background-color: white;
   width: 200px;
   aspect-ratio: 1/1;
-  position: fixed;
-  bottom: 550px;
+  position: absolute;
+  top: 210px;
   left: 30px;
 }
 
@@ -128,11 +115,5 @@ export default {
   border-color: #dedede;
   border-radius: 10px;
   z-index: 0;
-}
-
-.pagination * {
-  color: black;
-  font-size: 1.4rem;
-  font-weight: bold;
 }
 </style>
