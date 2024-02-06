@@ -1,14 +1,20 @@
 <script>
+import { backgroundTypes } from '../data';
 export default {
     name: 'Pomenon Card',
     props: {
         pokemon: Object
+    },
+    computed: {
+        bgColor() {
+            return backgroundTypes[this.pokemon.type]
+        }
     }
 }
 </script>
 
 <template>
-    <div class="pokemon-card text-center rounded p-3">
+    <div class="pokemon-card text-center rounded p-3" :style="`background-color: ${bgColor}`">
         <div class="thumb d-flex justify-content-center align-items-center rounded-circle mb-2">
             <figure>
 
