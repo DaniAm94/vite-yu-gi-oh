@@ -75,7 +75,7 @@ export default {
   <div class="background">
 
     <AppHeader @change-type="filterPokemonsPerType" :types="store.types" class="mb-5" />
-    <div class="container-sm py-3 main">
+    <div class="container-sm py-3 main z-1 position-relative ">
       <AppMain />
 
 
@@ -90,7 +90,7 @@ export default {
 <style>
 .background {
   min-height: 100vh;
-  background-image: linear-gradient(45deg, white 500px, black 500px 600px, red 600px);
+  background-image: linear-gradient(135deg, red 600px, black 600px 700px, white 700px);
   padding-top: 25px;
 }
 
@@ -102,8 +102,9 @@ export default {
   width: 200px;
   aspect-ratio: 1/1;
   position: absolute;
-  top: 210px;
+  top: 690px;
   left: 30px;
+  z-index: 0;
 }
 
 .container-sm.main {

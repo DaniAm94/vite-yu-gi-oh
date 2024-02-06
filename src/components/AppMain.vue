@@ -15,7 +15,7 @@ export default {
 
 <template>
     <AppLoader v-if="store.isLoading" />
-    <main v-else class="row row-cols-5 row-gap-3 ">
+    <main v-else class="row row-cols-2 row-cols-lg-4 row-cols-xxl-5 row-gap-3 ">
         <div v-for="pokemon in store.pokemons" :key="pokemon.id" class="col">
             <PokemonCard :pokemon="pokemon" />
         </div>
