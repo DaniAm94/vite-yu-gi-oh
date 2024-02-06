@@ -35,4 +35,24 @@ export default {
     font-size: 1.4rem;
     font-weight: bold;
 }
+
+li>span {
+    background-color: #dedede;
+    border: 1px solid black;
+}
+
+li>span:hover {
+    background-color: #dedede;
+}
+
+li:first-of-type>span:hover,
+li:last-of-type>span:hover {
+    transform: scale(1.1);
+}
+
+li:first-of-type>span:active,
+li:last-of-type>span:active {
+    background-color: rgb(109, 109, 109);
+    transform: scale(0.9);
+}
 </style>
