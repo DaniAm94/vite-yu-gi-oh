@@ -103,9 +103,20 @@ export default {
 <style>
 .background {
   height: 100vh;
-  background-image: url('./assets/img/pokemon-pokedex-background.jpg');
-  background-size: 100% 100%;
-  padding-top: 150px;
+  background-image: linear-gradient(45deg, white 500px, black 500px 600px, red 600px);
+  padding-top: 25px;
+}
+
+.background::after {
+  content: '';
+  border-radius: 50%;
+  border: 20px solid black;
+  background-color: white;
+  width: 200px;
+  aspect-ratio: 1/1;
+  position: fixed;
+  bottom: 550px;
+  left: 30px;
 }
 
 .container-sm.main {
@@ -116,6 +127,7 @@ export default {
   border-left: 10px solid;
   border-color: #dedede;
   border-radius: 10px;
+  z-index: 0;
 }
 
 .pagination * {
