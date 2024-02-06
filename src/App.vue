@@ -75,7 +75,7 @@ export default {
 <template>
   <div class="background">
 
-    <AppHeader @change-type="filterPokemonsPerType" :types="store.types" />
+    <AppHeader @change-type="filterPokemonsPerType" :types="store.types" class="mb-5" />
     <div class="container-sm py-3 main">
       <AppMain />
 
