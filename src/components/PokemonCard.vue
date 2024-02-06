@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-    <div class="pokemon-card shadow text-center rounded p-3">
+    <div class="pokemon-card text-center rounded p-3">
         <div class="thumb d-flex justify-content-center align-items-center rounded-circle mb-2">
             <figure>
 
@@ -25,6 +25,7 @@ export default {
 <style scoped>
 .pokemon-card {
     background-color: lightgray;
+    box-shadow: 0 0 10px black;
 }
 
 .thumb {
@@ -35,6 +36,11 @@ export default {
     figure {
         width: 70%;
         margin: 0;
+
+        img {
+            /* To prevent kakuna's img insane height */
+            max-height: 190px;
+        }
     }
 
 
