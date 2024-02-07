@@ -11,7 +11,10 @@ import AppPagination from './components/AppPagination.vue';
 
 export default {
   name: 'App Vue',
-  data: () => ({ store }),
+  data: () => ({
+    store,
+    currentEndpoint: endpoint
+  }),
   components: {
     AppMain,
     AppHeader,
@@ -52,16 +55,23 @@ export default {
       })
     },
     goTo(page) {
-      const endpointPlusPage = endpoint + `?page=${page}`
-      this.fetchPokemons(endpointPlusPage);
+      // Se il current endpoint contiene già una query (quella per tipo)
+      if (this.currentEndpoint.includes('?')) {
+        // Allora aggiungine un'altra (&) per la pagina (Non aggiorna il current endpoint)
+        this.fetchPokemons(this.currentEndpoint + `&page=${page}`);
+      } else {  // Altrimenti aggiungi la query per pagina come prima (?) (Non aggiorna il current endpoint)
+        this.fetchPokemons(this.currentEndpoint + `?page=${page}`);
+      }
     },
     filterPokemonsPerType(type) {
       if (type) {
-        this.fetchPokemons(endpoint + `?eq[type1]=${type}`)
+        // Se è statp selezionato un tipo aggiorna il current endpoint con la query per tipo
+        this.currentEndpoint = endpoint + `?eq[type1]=${type}`;
       } else {
-        // Se type è vuoto (quindi il select è su all)
-        this.fetchPokemons(endpoint)
+        // Altrimenti se type è vuoto (quindi il select è su all) resetta il current endpoint al valore di partenza
+        this.currentEndpoint = endpoint;
       }
+      this.fetchPokemons(this.currentEndpoint)
     }
   },
   created() {

@@ -7,13 +7,7 @@ export default {
     props: {
         types: Array
     },
-    emits: ['changeType'],
-    methods: {
-        changeType() {
-            this.$emit('changeType', this.currentType)
-        }
-    }
-
+    emits: ['changeType']
 }
 </script>
 
@@ -27,7 +21,7 @@ export default {
             <div class="led"></div>
             <div class="led"></div>
         </div>
-        <select v-model="currentType" @change="changeType" name="type" id="type">
+        <select v-model="currentType" @change="$emit('changeType', currentType)" name="type" id="type">
             <option selected value="">All</option>
             <option v-for="type in types" :value="type">{{ type }}</option>
 

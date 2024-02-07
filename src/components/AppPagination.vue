@@ -50,7 +50,7 @@ li:last-of-type>span:hover {
     transform: scale(1.1);
 }
 
-li:first-of-type>span:active,
+li:first-of-type>span:active2024,
 li:last-of-type>span:active {
     background-color: rgb(109, 109, 109);
     transform: scale(0.9);
